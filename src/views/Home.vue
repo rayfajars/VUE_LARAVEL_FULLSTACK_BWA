@@ -2,7 +2,10 @@
   <div class="home">
      <Header />
      <HeroSection />
-      
+     <HeroProduct />
+     <Instagram />
+     <PartnerLogo />
+     <Footer />
   </div>
 </template>
 
@@ -12,14 +15,20 @@
 import Header from '@/components/Header.vue'
 
 import HeroSection from '@/components/HeroSection.vue'
+import HeroProduct from '@/components/HeroProduct.vue'
+import Instagram from '@/components/Instagram.vue'
+import PartnerLogo from '@/components/PartnerLogo.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Home',
   components: {
-    // HelloWorld
     Header,
-    // carousel,
-    HeroSection
+    HeroSection,
+    HeroProduct,
+    Instagram,
+    PartnerLogo,
+    Footer
   }
 }
 </script>
