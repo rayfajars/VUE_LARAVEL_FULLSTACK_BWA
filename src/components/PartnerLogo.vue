@@ -41,6 +41,8 @@ export default {
    
   }
 }
+
+// console.log("yes")
 </script>
 
 <style>
