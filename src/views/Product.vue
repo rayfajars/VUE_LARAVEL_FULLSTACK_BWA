@@ -47,9 +47,9 @@
                                     <h4>RP. {{ productDetails.price}}</h4>
                                 </div>
                                 <div class="quantity">
-                                    <router-link to="/cart">
+                                    <!-- <router-link to="/cart"> -->
                                     <a  @click="saveKeranjang(productDetails.id,productDetails.name,productDetails.price,productDetails.galleries[0].photo)" class="primary-btn pd-cart" type="button">Add To Cart</a>
-                                    </router-link>
+                                    <!-- </router-link> -->
                                 </div>
                             </div>
                         </div>
@@ -106,6 +106,7 @@ export default {
           this.keranjangUser.push(productStorage);
           const parsed = JSON.stringify(this.keranjangUser);
           localStorage.setItem('keranjangUser', parsed);
+          window.location.reload();
       },
 
   },

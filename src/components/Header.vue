@@ -45,7 +45,7 @@
                                                             <h6>{{ keranjang.name }}</h6>
                                                         </div>
                                                     </td>
-                                                    <td @click="removeItem(keranjangUser.index)" class="si-close">
+                                                    <td @click="removeItem(keranjang.id)" class="si-close">
                                                         <i class="ti-close"></i>
                                                     </td>
                                                 </tr>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="select-total">
                                         <span>total:</span>
-                                        <h5>$120.00</h5>
+                                        <h5>Rp. {{ totalHarga }}</h5>
                                     </div>
                                     <div class="select-button">
                                         
@@ -85,10 +85,19 @@ export default {
           keranjangUser:[]
       }
   },methods: {
-      removeItem(index){
-          this.keranjangUser.splice(index,1);
-          const parsed = JSON.stringify(this.keranjangUser);
-          localStorage.setItem('keranjangUser', parsed);
+      removeItem(idx){
+        //   this.keranjangUser.splice(index,1);
+        //   const parsed = JSON.stringify(this.keranjangUser);
+        //   localStorage.setItem('keranjangUser', parsed);
+        let keranjangUserStorage = JSON.parse(localStorage.getItem("keranjangUser"));
+        let itemKeranjangUserStorage = keranjangUserStorage.map(itemKeranjangUserStorage => itemKeranjangUserStorage.id);
+
+        let index = itemKeranjangUserStorage.findIndex(id => id == idx);
+        this.keranjangUser.splice(index, 1);
+
+        const parsed = JSON.stringify(this.keranjangUser);
+        localStorage.setItem('keranjangUser', parsed);
+        // window.location.reload()
       }
   },
   mounted(){
@@ -99,6 +108,15 @@ export default {
         localStorage.removeItem('keranjangUser');
       }
     }
+  },
+//   fungsi computed untuk menampilkan data yg akan kita kalkulasi
+  computed:{
+      totalHarga() {
+        //   reduce itu looping dan menghitung
+          return this.keranjangUser.reduce(function(items,data){
+              return items + data.price;
+          },0);
+      }
   }
 
 }
