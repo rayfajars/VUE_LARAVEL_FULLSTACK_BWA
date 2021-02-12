@@ -117,10 +117,10 @@ export default {
       return {
           keranjangUser:[],
           customerInfo: {
-              name : "",
-              email : "",
-              number : "",
-              address: ""
+              name : '',
+              email : '',
+              number : '',
+              address: ''
           }
       }
   },methods: {
@@ -146,7 +146,7 @@ export default {
             'email': this.customerInfo.email,
             'number': this.customerInfo.number,
             'address': this.customerInfo.address,
-            'transaction_toal': this.totalBiaya,
+            'transaction_total': this.totalBiaya,
             'transaction_status': "PENDING",
             'transaction_details': productIds
         }
